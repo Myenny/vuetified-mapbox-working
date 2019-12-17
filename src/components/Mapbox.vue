@@ -7,6 +7,18 @@
         center: [-96, 37.8],
         zoom: 3,
       }"
+            :nav-control="{
+        show: true,
+        position: 'top-right'
+      }"
+      :geolocate-control="{
+        show: true,
+        position: 'top-left',
+        options: {
+          trackUserLocation: true,
+          showUserLocation: true
+        }
+      }"
     />
   </div>
 </template>
