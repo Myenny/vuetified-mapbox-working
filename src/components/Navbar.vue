@@ -22,15 +22,11 @@
       <v-spacer></v-spacer>
       
     <div v-if="!$auth.loading">
-      <!-- show login when not authenticated -->
-      <button v-if="!$auth.isAuthenticated" @click="login">Log in</button>
-      <!-- show logout when authenticated -->
-      <button v-if="$auth.isAuthenticated" @click="logout">Log out</button>
-    </div>
-      <v-btn flat color="grey" @click="signout">
+      <v-btn flat color="grey" v-if="$auth.isAuthenticated" @click="logout">
         <span>Sign out</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
+      </div>
 
     </v-toolbar>   
 
