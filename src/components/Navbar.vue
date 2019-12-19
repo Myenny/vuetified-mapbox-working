@@ -21,11 +21,12 @@
       </v-toolbar-title>
       <v-spacer></v-spacer>
       
-
-      <v-btn flat color="grey" @click="signout">
+    <div v-if="!$auth.loading">
+      <v-btn flat color="grey" v-if="$auth.isAuthenticated" @click="logout">
         <span>Sign out</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
+      </div>
 
     </v-toolbar>   
 
@@ -36,7 +37,7 @@
       <v-layout column align-center>
         <v-flex class="mt-5 text-xs-center">
           <v-avatar size="130">
-            <img :src="photoURL">
+            <img :src="$auth.user.picture">
           </v-avatar>
           <p class="white--text subheading mt-1 text-xs-center">
             {{name}}
@@ -88,7 +89,15 @@ export default {
     }
   },
   methods: {
-
+        login() {
+      this.$auth.loginWithRedirect();
+    },
+    // Log the user out
+    logout() {
+      this.$auth.logout({
+        returnTo: window.location.origin
+      });
+    },
     signout() {
       firebase.auth().signOut().then(() => {
         this.$router.replace('/auth')

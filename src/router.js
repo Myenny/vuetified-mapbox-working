@@ -5,7 +5,8 @@ import Settings from './views/Settings.vue'
 import Profile from './views/Profile.vue'
 import Auth from './views/Auth.vue'
 import Mapbox from '@/components/Mapbox.vue'
-import firebase from 'firebase'
+import { authGuard } from "./auth/authGuard";
+// import firebase from 'firebase'
 
 
 Vue.use(Router)
@@ -16,43 +17,35 @@ const router = new Router({
   routes: [
     {
       path: '*',
-      redirect: '/auth'
+      redirect: '/profile'
     },
     {
       path: '/',
-      redirect: '/auth'
+      redirect: '/profile'
     },
     {
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard,
-      meta: {
-        requiresAuth: true
-      }
+      beforeEnter: authGuard
     },
     {
       path: '/settings',
       name: 'settings',
       component: Settings,
-      meta: {
-        requiresAuth: true
-      }
+      beforeEnter: authGuard
     },
     {
       path: '/profile',
       name: 'profile',
       component: Profile,
-      meta: {
-        requiresAuth: true
-      }
+      beforeEnter: authGuard
     },
     {
       path: '/map',
       name: 'map',
       component: Mapbox,
-      meta: {
-        requiresAuth: true
-      }
+      beforeEnter: authGuard
     },
     {
       path: '/auth',
@@ -62,22 +55,22 @@ const router = new Router({
   ]
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    if (!firebase.auth().currentUser) {
-      next({
-        path: '/login',
-        query: { redirect: to.fullPath }
-      })
-    } else {
-      next()
-    }
-  } else {
-    next() // make sure to always call next()!
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requiresAuth)) {
+//     // this route requires auth, check if logged in
+//     // if not, redirect to login page.
+//     if (!firebase.auth().currentUser) {
+//       next({
+//         path: '/login',
+//         query: { redirect: to.fullPath }
+//       })
+//     } else {
+//       next()
+//     }
+//   } else {
+//     next() // make sure to always call next()!
+//   }
+// })
 
 export default router;
 
