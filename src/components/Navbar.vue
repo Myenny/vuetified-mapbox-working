@@ -37,7 +37,7 @@
       <v-layout column align-center>
         <v-flex class="mt-5 text-xs-center">
           <v-avatar size="130">
-            <img :src="photoURL">
+            <img :src="$auth.user.picture">
           </v-avatar>
           <p class="white--text subheading mt-1 text-xs-center">
             {{name}}
