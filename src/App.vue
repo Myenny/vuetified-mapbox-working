@@ -1,7 +1,8 @@
 <template>
   <v-app class="grey lighten-4">
     
-    <Navbar v-if="show"/>
+    <Navbar />
+    <router-link v-if="$auth.isAuthenticated" to="/profile"></router-link>
 
     <v-content class="mb-4" v-if="show">
       <router-view></router-view>

@@ -7,7 +7,7 @@
         center: [-96, 37.8],
         zoom: 3,
       }"
-            :nav-control="{
+        :nav-control="{
         show: true,
         position: 'top-right'
       }"

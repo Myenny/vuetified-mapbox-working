@@ -5,7 +5,8 @@ import Settings from './views/Settings.vue'
 import Profile from './views/Profile.vue'
 import Auth from './views/Auth.vue'
 import Mapbox from '@/components/Mapbox.vue'
-import firebase from 'firebase'
+import { authGuard } from "./auth/authGuard";
+// import firebase from 'firebase'
 
 
 Vue.use(Router)
@@ -16,43 +17,35 @@ const router = new Router({
   routes: [
     {
       path: '*',
-      redirect: '/auth'
+      redirect: '/profile'
     },
     {
       path: '/',
-      redirect: '/auth'
+      redirect: '/profile'
     },
     {
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard,
-      meta: {
-        requiresAuth: true
-      }
+      beforeEnter: authGuard
     },
     {
       path: '/settings',
       name: 'settings',
       component: Settings,
-      meta: {
-        requiresAuth: true
-      }
+      beforeEnter: authGuard
     },
     {
       path: '/profile',
       name: 'profile',
       component: Profile,
-      meta: {
-        requiresAuth: true
-      }
+      beforeEnter: authGuard
     },
     {
       path: '/map',
       name: 'map',
       component: Mapbox,
-      meta: {
-        requiresAuth: true
-      }
+      beforeEnter: authGuard
     },
     {
       path: '/auth',
