@@ -4,13 +4,14 @@ require('firebase/auth')
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "AIzaSyA2VM3IU0FLjhcs-iDGa_iXd5rnJcmPdWU",
-  authDomain: "todoteam-3263d.firebaseapp.com",
-  databaseURL: "https://todoteam-3263d.firebaseio.com",
-  projectId: "todoteam-3263d",
-  storageBucket: "todoteam-3263d.appspot.com",
-  messagingSenderId: "643524690865",
-  appId: "1:643524690865:web:1b7e4938dad3e2e4"
+  apiKey: "AIzaSyCLyusIISZ2SEhcK7g_Qi5EN2p9qZavADc",
+  authDomain: "idfk-happy.firebaseapp.com",
+  databaseURL: "https://idfk-happy.firebaseio.com",
+  projectId: "idfk-happy",
+  storageBucket: "idfk-happy.appspot.com",
+  messagingSenderId: "134563355927",
+  appId: "1:134563355927:web:6bcad8ae7d235d0bdbab52",
+  measurementId: "G-377VN8HHDE"
 };
 
 // Initialize Firebase
