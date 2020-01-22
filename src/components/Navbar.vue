@@ -65,10 +65,11 @@ export default {
       drawer: false,
       links: [
         { icon: "dashboard", text: "Dashboard", route: "/dashboard" },
-        { icon: "place", text: "Places", route: "/places" },
-        { icon: "event", text: "Events", route: "/events" },
         { icon: "person", text: "Profile", route: "/profile" },
         { icon: "map", text: "Map", route: "/map" },
+        { icon: "scanner", text: "QrScanner", route: "/qrscanner" },
+        { icon: "place", text: "Places", route: "/places" },
+        { icon: "event", text: "Events", route: "/events" },
         { icon: "settings", text: "Settings", route: "/settings" }
       ],
       snackbar: false
