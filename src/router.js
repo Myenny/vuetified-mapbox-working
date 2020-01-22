@@ -4,6 +4,7 @@ import Dashboard from '@/views/Dashboard.vue'
 import Settings from '@/views/Settings.vue'
 import Profile from '@/views/Profile.vue'
 import Auth from '@/views/Auth.vue'
+import Events from '@/views/Events.vue'
 import Places from '@/views/Places.vue'
 import Mapbox from '@/components/Mapbox.vue'
 import { authGuard } from "./auth/authGuard";
@@ -28,6 +29,12 @@ const router = new Router({
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard,
+      beforeEnter: authGuard
+    },
+    {
+      path: '/events',
+      name: 'events',
+      component: Events,
       beforeEnter: authGuard
     },
     {

@@ -136,7 +136,7 @@ export default {
       var storageRef = firebase.storage().ref();
 
       // Create a reference to 'images/mountains.jpg'
-      var avatarImagesRef = storageRef.child("images/" + this.userId);
+      var avatarImagesRef = storageRef.child("images/userspix/" + this.userId);
 
       // Upload
       avatarImagesRef.put(file).then(() => {

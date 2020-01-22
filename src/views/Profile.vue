@@ -9,6 +9,7 @@
                 <v-avatar size="180" class="avatar">
                   <img :src="$auth.user.picture" class="userAvatar" />
                 </v-avatar>
+
                 <v-layout column justify-center>
                   <h2>{{ $auth.user.name }}</h2>
                   <!-- <v-spacer></v-spacer> -->
@@ -35,7 +36,20 @@
 
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="primary" @click="followUser()">Follow</v-btn>
+              <v-layout row>
+                <input
+                  type="file"
+                  ref="uploadInput"
+                  id="files"
+                  accept="image/*"
+                  :multiple="false"
+                  @change="uploadImg($event)"
+                />
+                <v-btn color="primary" @click="selectFile">Add Images</v-btn>
+                <v-spacer></v-spacer>
+
+                <v-btn color="primary" @click="followUser()">Follow</v-btn>
+              </v-layout>
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -43,25 +57,10 @@
     </v-container>
   </div>
 </template>
-<!-- <template>
-  <div>
-    <div>
-      <v-layout row justify-left>
-        <v-avatar size="180" class="avatar">
-          <img :src="$auth.user.picture" class="userAvatar" />
-        </v-avatar>
-        <v-layout row justify-center>
-          <h2>{{ $auth.user.name }}</h2>
-          <p>{{ $auth.user.email }}</p>
-        </v-layout>
-      </v-layout>
-    </div>
-
-<div>
+<!--<div>
       <pre>{{ JSON.stringify($auth.user, null, 2) }}</pre>
     </div>
-  </div>
-</template>-->
+  </div>-->
 
 <script>
 export default {
@@ -73,7 +72,13 @@ export default {
     };
   },
 
-  methods: {}
+  methods: {
+    selectFile() {
+      this.$refs.uploadInput.click();
+    }
+
+    // uploadImg(e) {}
+  }
 };
 </script>
 <style>
