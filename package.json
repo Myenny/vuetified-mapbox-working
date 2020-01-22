@@ -57,7 +57,7 @@
     "> 1%",
     "last 2 versions"
   ],
-  "description": "A simple Web App made with Vuejs, Vuetify and the powerful Firebase. Live preview: https://todoteam-3263d.firebaseapp.com/",
+  "description": "A simple Web App made with Vuejs, and Vuetify",
   "main": "babel.config.js",
   "repository": {
     "type": "git",
