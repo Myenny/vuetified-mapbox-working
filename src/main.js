@@ -5,6 +5,9 @@ import router from './router'
 // import firebase from 'firebase'
 import { domain, clientId } from "../auth_config.json";
 import { Auth0Plugin } from "./auth";
+import VueQrcodeReader from "vue-qrcode-reader";
+
+Vue.use(VueQrcodeReader);
 
 Vue.config.productionTip = false
 

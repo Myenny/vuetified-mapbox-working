@@ -6,6 +6,7 @@ import Profile from '@/views/Profile.vue'
 import Auth from '@/views/Auth.vue'
 import Events from '@/views/Events.vue'
 import Places from '@/views/Places.vue'
+import QrScanner from '@/views/QrScanner.vue'
 import Mapbox from '@/components/Mapbox.vue'
 import { authGuard } from "./auth/authGuard";
 // import firebase from 'firebase'
@@ -41,6 +42,12 @@ const router = new Router({
       path: '/places',
       name: 'places',
       component: Places,
+      beforeEnter: authGuard
+    },
+    {
+      path: '/qrscanner',
+      name: 'qrscanner',
+      component: QrScanner,
       beforeEnter: authGuard
     },
     {
