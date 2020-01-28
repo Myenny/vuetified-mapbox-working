@@ -2,16 +2,19 @@
   "name": "VuetifiedMapbox",
   "version": "0.1.0",
   "private": true,
+  "description": "A simple Web App made with Vuejs, and Vuetify",
+  "author": "",
   "scripts": {
-    "dev": "node build/dev-server.js --host 0.0.0.0",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
+    "dev": "node build/dev-server.js --host 0.0.0.0",
     "start": "node server.js"
   },
+  "main": "babel.config.js",
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.6.0",
-    "core-js": "^2.6.11",
+    "core-js": "^3.4.4",
     "date-fns": "^1.30.1",
     "firebase": "^6.6.2",
     "mapbox-gl": "^1.6.0",
@@ -23,15 +26,15 @@
     "vuetify": "^1.5.21"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.12.1",
-    "@vue/cli-plugin-eslint": "^3.12.1",
-    "@vue/cli-service": "^3.12.1",
+    "@vue/cli-plugin-babel": "^4.1.2",
+    "@vue/cli-plugin-eslint": "^4.1.2",
+    "@vue/cli-service": "^4.1.2",
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.2.3",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.1",
-    "vue-cli-plugin-vuetify": "^0.5.0",
+    "vue-cli-plugin-vuetify": "^2.0.3",
     "vue-template-compiler": "^2.6.11",
     "vuetify-loader": "^1.4.3"
   },
@@ -58,16 +61,13 @@
     "> 1%",
     "last 2 versions"
   ],
-  "description": "A simple Web App made with Vuejs, and Vuetify",
-  "main": "babel.config.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Myenny/vuetified-mapbox-working"
-  },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Myenny/vuetified-mapbox-working"
   },
-  "homepage": "https://github.com/Myenny/vuetified-mapbox-working#readme"
+  "homepage": "https://github.com/Myenny/vuetified-mapbox-working#readme",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Myenny/vuetified-mapbox-working"
+  }
 }

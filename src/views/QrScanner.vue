@@ -39,9 +39,9 @@ export default {
     }
   },
   methods: {
-    onInit(promise) {
-      promise.catch(console.error).then(this.resetValidationState);
-    },
+    // onInit(promise) {
+    //   promise.catch(console.error).then(this.resetValidationState);
+    // },
     resetValidationState() {
       this.isValid = undefined;
     },
