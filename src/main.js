@@ -9,8 +9,6 @@ import VueQrcodeReader from "vue-qrcode-reader";
 
 Vue.use(VueQrcodeReader);
 
-Vue.config.productionTip = false
-
 Vue.use(Auth0Plugin, {
   domain,
   clientId,

@@ -20,4 +20,6 @@ yarn-error.log*
 *.sw?
 
 # src/firebase/.gitignore
-fb.json
+src/fb.js
+firebase-key.json
+.firebase/firebase-key.json

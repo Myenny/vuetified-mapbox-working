@@ -30,11 +30,7 @@ const jwtCheck = jwt({
     algorithm: 'RS256'
 });
 
-// src/server.js
-
-// ... keep the rest untouched ...
-
-const serviceAccount = require('./firebase/firebase-key');
+const serviceAccount = require('./.firebase/firebase-key');
 
 firebaseAdmin.initializeApp({
     credential: firebaseAdmin.credential.cert(serviceAccount),

@@ -1,37 +1,43 @@
 <template>
+
   <nav>
+
     <v-snackbar v-model="snackbar" :timeout="4000" top color="success">
       <span>Wow! You added a new project.</span>
       <v-btn flat color="white" @click="snackbar = false">Close</v-btn>
     </v-snackbar>
 
     <v-toolbar flat app>
+
       <v-toolbar-side-icon class="grey--text" @click="drawer = !drawer"></v-toolbar-side-icon>
 
       <v-toolbar-title class="text-uppercase grey--text">
-        <span class="font-weight-light">Vuetified MapBox</span>
+        <span class="font-weight-light">Todo</span>
+        <span>Dev</span>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
-      <v-toolbar-title class="text-uppercase grey--text">
-        <span class="font-weight-light">Tokens: 1,000,000,000</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
+      
 
-      <v-btn flat color="grey" v-if="$auth.isAuthenticated" @click="logout">
+      <v-btn flat color="grey" @click="signout">
         <span>Sign out</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
-    </v-toolbar>
+
+    </v-toolbar>   
+
 
     <!-- Drawer -->
     <v-navigation-drawer v-model="drawer" app class="primary">
+
       <v-layout column align-center>
         <v-flex class="mt-5 text-xs-center">
           <v-avatar size="130">
-            <img :src="$auth.user.picture" />
+            <img :src="photoURL">
           </v-avatar>
-          <p class="white--text subheading mt-1 text-xs-center">{{$auth.user.name}}</p>
+          <p class="white--text subheading mt-1 text-xs-center">
+            {{name}}
+          </p>
         </v-flex>
         <v-flex class="mt-3 mb-3">
           <Popup @projectAdded="snackbar=true" />
@@ -46,15 +52,21 @@
           <v-list-tile-content>
             <v-list-tile-title class="white--text">{{ link.text }}</v-list-tile-title>
           </v-list-tile-content>
+
         </v-list-tile>
       </v-list>
+      
     </v-navigation-drawer>
+
+
   </nav>
+
 </template>
 
 
 <script>
 import Popup from "./Popup";
+import firebase from 'firebase';
 
 export default {
   components: { Popup },
@@ -66,11 +78,13 @@ export default {
       links: [
         { icon: "dashboard", text: "Dashboard", route: "/dashboard" },
         { icon: "person", text: "Profile", route: "/profile" },
+        { icon: "chat", text: "Chat", route: "/chat" },
         { icon: "map", text: "Map", route: "/map" },
         { icon: "scanner", text: "QrScanner", route: "/qrscanner" },
         { icon: "place", text: "Places", route: "/places" },
         { icon: "event", text: "Events", route: "/events" },
-        { icon: "settings", text: "Settings", route: "/settings" }
+        { icon: "settings", text: "Settings", route: "/settings" },
+        { icon: "api", text: "External Api", route: "/external-api" }
       ],
       snackbar: false
     };
@@ -80,14 +94,19 @@ export default {
       this.$auth.loginWithRedirect();
     },
     // Log the user out
-    logout() {
-      this.$auth.logout({
-        returnTo: window.location.origin
-      });
+        signout() {
+      firebase.auth().signOut().then(() => {
+        this.$router.replace('/auth')
+      })
     },
-    signout() {
-      this.$router.replace("/auth");
-    }
+    // logout() {
+    //   this.$auth.logout({
+    //     returnTo: window.location.origin
+    //   });
+    // },
+    // signout() {
+    //   this.$router.replace("/auth");
+    // }
   }
 
   // created() {

@@ -8,8 +8,10 @@ import Events from '@/views/Events.vue'
 import Places from '@/views/Places.vue'
 import QrScanner from '@/views/QrScanner.vue'
 import Mapbox from '@/components/Mapbox.vue'
+import Chat from '@/components/Chat.vue'
+import ExternalApiView from "./views/ExternalApi.vue";
 import { authGuard } from "./auth/authGuard";
-// import firebase from 'firebase'
+import firebase from 'firebase'
 
 
 Vue.use(Router)
@@ -20,53 +22,81 @@ const router = new Router({
   routes: [
     {
       path: '*',
-      redirect: '/profile'
+      redirect: '/auth'
     },
     {
       path: '/',
-      redirect: '/profile'
+      redirect: '/auth'
     },
     {
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/external-api",
+      name: "external-api",
+      component: ExternalApiView,
       beforeEnter: authGuard
     },
     {
       path: '/events',
       name: 'events',
       component: Events,
-      beforeEnter: authGuard
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/chat',
+      name: 'chat',
+      component: Chat,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/places',
       name: 'places',
       component: Places,
-      beforeEnter: authGuard
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/qrscanner',
       name: 'qrscanner',
       component: QrScanner,
-      beforeEnter: authGuard
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/settings',
       name: 'settings',
       component: Settings,
-      beforeEnter: authGuard
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/profile',
       name: 'profile',
       component: Profile,
-      beforeEnter: authGuard
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/map',
       name: 'map',
       component: Mapbox,
-      beforeEnter: authGuard
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/auth',
@@ -76,22 +106,22 @@ const router = new Router({
   ]
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.matched.some(record => record.meta.requiresAuth)) {
-//     // this route requires auth, check if logged in
-//     // if not, redirect to login page.
-//     if (!firebase.auth().currentUser) {
-//       next({
-//         path: '/login',
-//         query: { redirect: to.fullPath }
-//       })
-//     } else {
-//       next()
-//     }
-//   } else {
-//     next() // make sure to always call next()!
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!firebase.auth().currentUser) {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next() // make sure to always call next()!
+  }
+})
 
 export default router;
 
