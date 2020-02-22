@@ -55,12 +55,11 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <!-- <div>
+      <pre>{{ JSON.stringify($auth.user, null, 2) }}</pre>
+    </div> -->
   </div>
 </template>
-<!--<div>
-      <pre>{{ JSON.stringify($auth.user, null, 2) }}</pre>
-    </div>
-  </div>-->
 
 <script>
 export default {

@@ -1,0 +1,9 @@
+query getUser {
+           getUser(id: 5) {
+              name
+              pets {
+                id
+                name
+              }
+            }
+       }
